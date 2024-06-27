@@ -57,8 +57,8 @@ $this->validate($request, [
 'permission' => 'required',
 ]);
 $roles = Role::create(['name' => $request->input('name')]);
-$roles->syncPermissions($request->input('permission'));
-return redirect('/roles.index')
+// $roles->syncPermissions($request->input('permission'));
+return redirect('roles.index')
 
 ->with('success','Role created successfully');
 }
@@ -67,9 +67,9 @@ return redirect('/roles.index')
 *
 *
 */
-public function show_roles()
+public function show_roles($id)
 {
-$roles = Role::all();
+$roles = Role::find($id);
 $roolePermissions = Permission::join("role_has_permissions","role_has_permissions.permission_id","=","permissions.id")
 ->get();
 return view('roles.show_roles',array('roles'=>$roles,'roolePermissions'=>$roolePermissions));
@@ -80,9 +80,10 @@ return view('roles.show_roles',array('roles'=>$roles,'roolePermissions'=>$rooleP
 *
 *
 */
-public function edit_roles()
+
+public function edit_roles($id)
 {
-$role = Role::all();
+$role = Role::find($id);
 $permission = Permission::get();
 $rolePermissions = DB::table("role_has_permissions");
 
@@ -103,7 +104,8 @@ $roles = Role::find($id);
 $roles->name = $request->input('name');
 $roles->save();
 $roles->syncPermissions($request->input('permission'));
-return redirect()->route('roles.index')
+return redirect('roles.index')
+
 ->with('success','Role updated successfully');
 }
 /**

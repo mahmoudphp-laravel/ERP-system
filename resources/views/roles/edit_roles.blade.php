@@ -39,7 +39,9 @@
 
 
 
-{!! Form::model($role, ['method' => 'PATCH','route' => ['roles.update', $role->id]]) !!}
+{!! Form::model($role, ['method' => 'put','route' => ['roles.update', $role->id]]) !!}
+
+
 
 <!-- row -->
 <div class="row">
@@ -60,7 +62,7 @@
                                 <ul>
                                     <li>
                                         @foreach($permission as $value)
-                                        <label>{{ Form::checkbox('permission[]', $value->id, in_array($value->id, $rolePermissions) ? true : false, array('class' => 'name')) }}
+                                        <label>{{ Form::checkbox('permission[]', $value->id) }}
 
                                             {{ $value->name }}</label>
                                         <br />

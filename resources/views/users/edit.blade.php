@@ -43,15 +43,17 @@
             <div class="card-body">
                 <div class="col-lg-12 margin-tb">
                     <div class="pull-right">
-                        <a class="btn btn-primary btn-sm" href="{{ route('users.index') }}">رجوع</a>
+                        <a class="btn btn-primary btn-sm" href="{{ url('/' . $page='users.show_users') }}">رجوع</a>
                     </div>
                 </div><br>
+
+                {!! Form::model($user, ['method' => 'put','route' => ['users.update', $user->id]]) !!}
 
                 <div class="">
 
                     <div class="row mg-b-20">
                         <div class="parsley-input col-md-6" id="fnWrapper">
-                            <label>اسم المستخدم: <span class="tx-danger">*</span></label>
+                            <label>اسم المستخدم: <span class="tx-danger">{{$user->name}}</span></label>
                         </div>
 
                         <div class="parsley-input col-md-6 mg-t-20 mg-md-t-0" id="lnWrapper">
@@ -89,6 +91,8 @@
                 <div class="mg-t-30">
                     <button class="btn btn-main-primary pd-x-20" type="submit">تحديث</button>
                 </div>
+                {!! Form::close() !!}
+
             </div>
         </div>
     </div>

@@ -39,9 +39,11 @@
 @endif
 
 
-<form action='roles.store' method="post">
 
 {{--  {!! Form::open(array(action =>'roles.store','method'=>'POST')) !!}  --}}
+
+{!! Form::open( ['method' => 'post','route' => ['roles.store']]) !!}
+
 <!-- row -->
 <div class="row">
     <div class="col-md-12">
@@ -64,7 +66,7 @@
                             </li>
                             @foreach($permission as $value)
                             <label
-                                style="font-size: 16px;">{{ Form::checkbox('permission[]', $value->id, false, array('class' => 'name')) }}
+                                style="font-size: 16px;">{{ Form::checkbox('permission[]', $value->id, false) }}
                                 {{ $value->name }}</label>
 
                             @endforeach
@@ -90,7 +92,6 @@
 <!-- Container closed -->
 </div>
 <!-- main-content closed -->
-</form>
 {{--  {!! Form::close() !!}  --}}
 @endsection
 @section('js')

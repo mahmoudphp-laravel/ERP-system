@@ -82,9 +82,8 @@
                                                    </td>
 
                                 <td>
-                                    <a href="users.edit" class="btn btn-sm btn-info"
+                                    <a href="{{ url('users.edit') }}/{{ $user->id }}" class="btn btn-sm btn-info"
                                         title="تعديل"><i class="las la-pen"></i></a>
-
 
 
 
@@ -93,6 +92,7 @@
                                         data-toggle="modal" href="#modaldemo8" title="حذف"><i
                                             class="las la-trash"></i></a>
 
+                                            
 
 
 

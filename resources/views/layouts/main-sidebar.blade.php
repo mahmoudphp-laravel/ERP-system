@@ -28,7 +28,7 @@
 						<ul class="slide-menu">
 							<li><a class="slide-item" href="{{ url('/' . $page='vatora.empty') }}">قائمة الفواتير</a></li>
 							<li><a class="slide-item" href="{{ url('/' . $page='invoices.invoices_paid') }}">الفواتير المدفوعة</a></li>
-							<li><a class="slide-item" href="{{ url('/' . $page='chart-chartjs') }}">الفواتير الغير مدفوعة</a></li>
+							<li><a class="slide-item" href="{{ url('/' . $page='invoices.invoices_unpaid') }}">الفواتير الغير مدفوعة</a></li>
 							<li><a class="slide-item" href="{{ url('/' . $page='chart-echart') }}">الفواتير المدفوعة جزئيا</a></li>
 						>
 						</ul>

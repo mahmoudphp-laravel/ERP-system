@@ -50,6 +50,8 @@ Route::delete('/products/destroy',  [ProductsController::class, 'destroy']);
 
 Route::delete('/invoices/destrooy',  [InvoicesController::class, 'destrooy']);
 Route::get('/invoices.invoices_paid',  [InvoicesController::class, 'Invoice_Paid']);
+Route::get('/invoices.invoices_unpaid',  [InvoicesController::class, 'Invoice_unPaid']);
+
 
 Route::get('/invoices/create',  [InvoicesController::class, 'create']);
 Route::get('/section/{id}', [InvoicesController::class, 'getproducts']);
@@ -70,12 +72,18 @@ Route::post('roles.store',  [RoleController::class, 'store']);
 //     return view('users.Add_user');
 // });
 Route::post('users.store',  [UserController::class,'store']);
-Route::post('users.edit',  [UserController::class,'edit']);
-Route::get('/roles.show_roles',  [RoleController::class,'show_roles']);
-Route::get('roles.edit_roles',  [RoleController::class,'edit_roles'])->name('edit_roles');
+Route::get('users.edit/{id}',  [UserController::class,'editt']);
+Route::put('users.update/{id}',  [UserController::class,'update'])->name('users.update');
+
+
+Route::get('/roles.show_roles/{id}',  [RoleController::class,'show_roles']);
+Route::get('roles.edit_roles/{id}',  [RoleController::class,'edit_roles']);
+Route::put('roles.update/{id}',  [RoleController::class,'update'])->name('roles.update');
+Route::post('roles.store}',  [RoleController::class,'store']);
 
 
 Route::delete('users.destroy',  [UserController::class,'destroy']);
+// Route::post('users.edit',  [UserController::class,'edit']);
 
 
 
@@ -115,13 +123,13 @@ Route::get('customers_report', [Customers_Report::class,'index'])->name("custome
 Route::post('Search_customers', [Customers_Report::class, 'Search_customers']);
 
 
-Route::group(['middleware' => ['auth']], function() {
+// Route::group(['middleware' => ['auth']], function() {
 
-    Route::resource('roles','RoleController');
+//     // Route::resource('roles','RoleController');
 
-    Route::resource('users','UserController');
+//     // Route::resource('users','UserController');
 
-    });
+//     });
 
 
 

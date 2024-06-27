@@ -187,7 +187,15 @@ class InvoicesController extends Controller
     {
         $de = vatora::where('Value_Status',1)->get();
         // return view('invoices.invoices_paid', compact('de'));
-        return view('invoices.invoices_paid', array('de'=> $de));    }
+        return view('invoices.invoices_paid', array('de'=> $de));
+       }
+
+       public function Invoice_unPaid()
+       {
+           $invoices = vatora::where('Value_Status',2)->get();
+           return view('invoices.invoices_unpaid', array('invoices'=> $invoices));
+
+       }
 
 
     /**

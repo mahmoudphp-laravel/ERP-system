@@ -79,12 +79,12 @@ return view('users.show',compact('user'));
 *
 
 */
-public function edit($id)
+public function editt($id)
 {
 $user =User::find($id);
 $roles = Role::pluck('name','name')->all();
 $userRole = $user->roles->pluck('name','name')->all();
-return view('users.edit',compact('user','roles','userRole'));
+return view('users.edit',compact('user'));
 }
 /**
 * Update the specified resource in storage.
@@ -102,5 +102,27 @@ public function destroy(Request $request)
 User::find($request->user_id)->delete();
 return redirect('/users.show_users')
 ->with('success','تم حذف المستخدم بنجاح');
+}
+
+public function update(Request $request, $id)
+{
+// $this->validate($request, [
+// 'name' => 'required',
+// 'email' => 'required|email|unique:users,email,'.$id,
+// 'password' => 'same:confirm-password',
+// 'roles' => 'required'
+// ]);
+$input = $request->all();
+if(!empty($input['password'])){
+$input['password'] = Hash::make($input['password']);
+}else{
+}
+$user = User::find($id);
+$user->update($input);
+DB::table('model_has_roles')->where('model_id',$id)->delete();
+$user->assignRole($request->input('roles'));
+return redirect('/users.show_users')
+
+->with('success','تم تحديث معلومات المستخدم بنجاح');
 }
 }

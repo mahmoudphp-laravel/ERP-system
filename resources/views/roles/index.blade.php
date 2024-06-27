@@ -97,18 +97,23 @@
                             <td>{{ $i }}</td>
                                     <td>{{ $role->name }}</td>
                                     <td>
-                                            <a class="btn btn-success btn-sm"
-                                            href="roles.show_roles">عرض</a>
 
-                                            <a class="btn btn-primary btn-sm"
-                                            href="roles.edit_roles">تعديل</a>
 
+                                            <a href="{{ url('roles.show_roles') }}/{{ $role->id }}" class="btn btn-sm btn-info"
+                                                title="تعديل"><i class="las la-pen"></i>عرض</a>
+
+
+
+                                            <a href="{{ url('roles.edit_roles') }}/{{ $role->id }}" class="btn btn-primary btn-sm"
+                                                title="تعديل"><i class="las la-pen"></i>تعديل</a>
+
+{{--  
                                         @if ($role->name !== 'owner')
                                                 {!! Form::open(['method' => 'DELETE', 'route' => ['roles.destroy',
                                                 $role->id], 'style' => 'display:inline']) !!}
                                                 {!! Form::submit('حذف', ['class' => 'btn btn-danger btn-sm']) !!}
                                                 {!! Form::close() !!}
-                                        @endif
+                                        @endif  --}}
 
 
                                     </td>

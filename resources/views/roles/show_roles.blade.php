@@ -41,7 +41,8 @@
                     <div class="col-lg-4">
                         <ul id="treeview1">
                             <li>
-                                 <a href="roles.show_roles">{{ $role->name }}</a>
+                                 <a href="roles.show_roles/{id}">{{ $roles->name }}</a>
+
                                 <ul>
                                     @if(!empty($roolePermissions))
                                     @foreach($roolePermissions as $v)
